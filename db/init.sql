@@ -1,10 +1,8 @@
--- Connect to the database
-\c voting_app;
 
 -- Drop old tables if they exist (for resetting)
 DROP TABLE IF EXISTS votes;
-DROP TABLE IF EXISTS users CASCADE; -- Cascade to drop dependent tables first
-DROP TABLE IF EXISTS candidates CASCADE;
+DROP TABLE IF EXISTS users; -- Cascade to drop dependent tables first
+DROP TABLE IF EXISTS candidates;
 
 -- 🧍 Users table
 CREATE TABLE users (

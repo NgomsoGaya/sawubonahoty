@@ -1,15 +1,17 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import dotenv from "dotenv";
 
-// Import route files
+
+
 import candidatesRoutes from "./routes/candidates.js";
 import usersRoutes from "./routes/users.js";
 import votesRoutes from "./routes/votes.js";
 import authRoutes from "./routes/auth.js";
 
-dotenv.config();
 const app = express();
 
 app.use(cors());
