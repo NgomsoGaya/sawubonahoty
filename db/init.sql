@@ -1,8 +1,8 @@
 
 -- Drop old tables if they exist (for resetting)
-DROP TABLE IF EXISTS votes;
-DROP TABLE IF EXISTS users; -- Cascade to drop dependent tables first
-DROP TABLE IF EXISTS candidates;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS candidates CASCADE; -- Cascade to drop dependent tables first
+DROP TABLE IF EXISTS votes CASCADE;
 
 -- 🧍 Users table
 CREATE TABLE users (
@@ -17,7 +17,8 @@ CREATE TABLE users (
 CREATE TABLE candidates (
   id SERIAL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
-  description TEXT
+  description TEXT,
+  picture_url VARCHAR(255)  
 );
 
 -- 🗳️ Votes table
@@ -32,7 +33,7 @@ CREATE TABLE votes (
 -- 👥 Sample users (passwords will be hashed upon registration/seed)
 -- UPDATE: Use INSERT with hashed password or hash on registration. For simplicity in init.sql, we'll insert raw data and assume you'll hash it for real use.
 INSERT INTO users (id, name, email, is_admin) VALUES
-(1, 'Alice Johnson', 'alice@example.com', TRUE), -- Alice is the Admin
+(1, 'Alice Johnson', 'alice@example.com', TRUE),
 (2, 'Bob Smith', 'bob@example.com', FALSE);
 
 -- 🧑‍💼 Sample candidates
